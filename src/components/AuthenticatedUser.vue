@@ -14,6 +14,8 @@
 
 <script lang="ts">
 import { ref/*, defineProps*/ } from 'vue'
+import * as PusherPushNotifications from "@pusher/push-notifications-web";
+
 
 export default{
     
@@ -21,17 +23,39 @@ export default{
         appUserId: String
     },
 
-    setup(){
+    setup(props) {
 
+        const instanceId = '';
+        const url = '';
         // defineProps<{appUserId :string }>() // solo sive con <script setup>
 
         const deviceId = ref('x');
 
-        function startAuth() :void {
-            deviceId.value = 'y';
-            console.log('starAuth');
-            //alert('starauth');
+        async function startAuth() : Promise<void> {
+            //const instanceId = '';
+            //const url = '';
+            const userLocalId = props.appUserId;
+
+            const beamsClient = new PusherPushNotifications.Client({
+                instanceId
+            });
+
+            const beamsTokenProvider = new PusherPushNotifications.TokenProvider({
+                url// en la respuesta de este endpoint debe venir el token que se debe pasar en auth bearer
+            });
+            
+            try {
+                await beamsClient.start();
+                const setUserResult = await beamsClient.setUserId(
+                    userLocalId, //'12', 
+                    beamsTokenProvider
+                ); // An object that contains a method called fetchToken. This method must return a promise that resolves to a correctly signed Beams Token for the desired user ID (
+                console.log('Beams client setUserId', setUserResult);
+            } catch (error) {
+                console.error(error);
+            }
         }
+
 
         return {
             deviceId,
