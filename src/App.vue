@@ -10,7 +10,7 @@ import AuthenticatedUser from './components/AuthenticatedUser.vue'
   </header>
 
   <main>
-    <AuthenticatedUser />
+    <AuthenticatedUser app-user-id="55" />
   </main>
 
 </template>
