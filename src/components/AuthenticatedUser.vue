@@ -25,12 +25,12 @@ export default{
 
     setup(props) {
 
-        const instanceId = '';
-        const url = '';
+        const instanceId = import.meta.env.VITE_API_BEAMS_INSTANCE_ID;//'0dab116e-1074-4283-a393-2a31b33e2c43';
+        const url = import.meta.env.VITE_API_URL;//'http://localhost:32000/tecniko-api/beams-auth';
         // defineProps<{appUserId :string }>() // solo sive con <script setup>
 
         const deviceId = ref('x');
-
+        
         async function startAuth() : Promise<void> {
             //const instanceId = '';
             //const url = '';
