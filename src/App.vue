@@ -1,6 +1,9 @@
 <script setup lang="ts">
 import AuthenticatedUser from './components/AuthenticatedUser.vue'
 
+const instanceId = import.meta.env.VITE_API_BEAMS_INSTANCE_ID;
+const authEndpoint = import.meta.env.VITE_API_URL;
+
 </script>
 
 <template>
@@ -10,7 +13,10 @@ import AuthenticatedUser from './components/AuthenticatedUser.vue'
   </header>
 
   <main>
-    <AuthenticatedUser app-user-id="12" />
+    <AuthenticatedUser 
+      app-user-id="12" 
+      :beams-instance-id="instanceId"
+      :auth-endpoint="authEndpoint" />
   </main>
 
 </template>

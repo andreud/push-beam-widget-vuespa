@@ -16,24 +16,27 @@
 import { ref/*, defineProps*/ } from 'vue'
 import * as PusherPushNotifications from "@pusher/push-notifications-web";
 
-
 export default{
     
     props:{
-        appUserId: String
+        appUserId: String,
+        beamsInstanceId: String,
+        authEndpoint: String // URL sirve pero no acepta vacio
     },
 
     setup(props) {
-
-        const instanceId = import.meta.env.VITE_API_BEAMS_INSTANCE_ID;//'0dab116e-1074-4283-a393-2a31b33e2c43';
-        const url = import.meta.env.VITE_API_URL;//'http://localhost:32000/tecniko-api/beams-auth';
         // defineProps<{appUserId :string }>() // solo sive con <script setup>
 
         const deviceId = ref('x');
         
         async function startAuth() : Promise<void> {
-            //const instanceId = '';
-            //const url = '';
+
+            if (!props.authEndpoint || !props.appUserId || !props.beamsInstanceId) {
+                throw new Error("authEndpoint, appUserId and beamsInstanceId are required");
+            }
+
+            const instanceId = props.beamsInstanceId;
+            const url = props.authEndpoint;
             const userLocalId = props.appUserId;
 
             const beamsClient = new PusherPushNotifications.Client({
@@ -41,7 +44,13 @@ export default{
             });
 
             const beamsTokenProvider = new PusherPushNotifications.TokenProvider({
-                url// en la respuesta de este endpoint debe venir el token que se debe pasar en auth bearer
+                url,// en la respuesta de este endpoint debe venir el token que se debe pasar en auth bearer04
+                queryParams: {
+                    someQueryParam: "parameter-content", // URL query params your auth endpoint needs
+                },
+                headers: {
+                    someHeader: "header-content", // Headers your auth endpoint needs
+                },
             });
             
             try {
@@ -56,10 +65,19 @@ export default{
             }
         }
 
+        function getBeamsUser() {
+            return '';
+        }
+
+        function logOut() {
+            return '';
+        }
 
         return {
             deviceId,
-            startAuth
+            startAuth,
+            getBeamsUser,
+            logOut
         }
     }
 }
