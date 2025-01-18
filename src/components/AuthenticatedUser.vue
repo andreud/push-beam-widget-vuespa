@@ -39,9 +39,8 @@ export default{
             const url = props.authEndpoint;
             const userLocalId = props.appUserId;
 
-            const beamsClient = new PusherPushNotifications.Client({
-                instanceId
-            });
+            const beamsClient = new PusherPushNotifications.Client({instanceId});
+            console.log({beamsClient});
 
             const beamsTokenProvider = new PusherPushNotifications.TokenProvider({
                 url,// en la respuesta de este endpoint debe venir el token que se debe pasar en auth bearer04
@@ -52,14 +51,18 @@ export default{
                     someHeader: "header-content", // Headers your auth endpoint needs
                 },
             });
+            console.log({beamsTokenProvider});
             
             try {
-                await beamsClient.start();
+                const clientsrtres = await beamsClient.start();
+                console.log({clientsrtres});
+
                 const setUserResult = await beamsClient.setUserId(
                     userLocalId, //'12', 
                     beamsTokenProvider
                 ); // An object that contains a method called fetchToken. This method must return a promise that resolves to a correctly signed Beams Token for the desired user ID (
                 console.log('Beams client setUserId', setUserResult);
+            
             } catch (error) {
                 console.error(error);
             }
