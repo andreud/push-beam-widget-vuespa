@@ -29,7 +29,7 @@ export default{
 
         const deviceId = ref('x');
         
-        async function startAuth() : Promise<void> {
+        async function startAuth() {
 
             if (!props.authEndpoint || !props.appUserId || !props.beamsInstanceId) {
                 throw new Error("authEndpoint, appUserId and beamsInstanceId are required");
@@ -56,7 +56,12 @@ export default{
             try {
                 const clientsrtres = await beamsClient.start();
                 console.log({clientsrtres});
-
+                if(clientsrtres){
+                    console.log('clientsrtres._deviceId');
+                    console.log(clientsrtres._deviceId);
+                    //console.log
+                }
+                
                 const setUserResult = await beamsClient.setUserId(
                     userLocalId, //'12', 
                     beamsTokenProvider
@@ -68,12 +73,36 @@ export default{
             }
         }
 
-        function getBeamsUser() {
-            return '';
+        async function getBeamsUser() {
+
+            console.log('gettn user');
+            if (!props.authEndpoint || !props.appUserId || !props.beamsInstanceId) {
+                throw new Error("authEndpoint, appUserId and beamsInstanceId are required");
+            }
+            const instanceId = props.beamsInstanceId;
+            const beamsClient = new PusherPushNotifications.Client({instanceId});
+            
+            // Get User ID
+            const userIdResp = await beamsClient.getUserId();
+            console.log('Beams client userId', userIdResp);
+            
+            
+            // Get Device ID
+            const deviceIdResp = await beamsClient.getDeviceId();
+            console.log('Beams client deviceId', deviceIdResp);
+            deviceId.value = deviceIdResp;
         }
 
-        function logOut() {
-            return '';
+        async function logOut() {
+            if (!props.authEndpoint || !props.appUserId || !props.beamsInstanceId) {
+                throw new Error("authEndpoint, appUserId and beamsInstanceId are required");
+            }
+            const instanceId = props.beamsInstanceId;
+            const beamsClient = new PusherPushNotifications.Client({instanceId});
+            console.log({beamsClient});
+
+            await beamsClient.stop();
+            console.log('Beams client stopped');
         }
 
         return {
