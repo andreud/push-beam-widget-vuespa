@@ -11,7 +11,7 @@ const useBeamsClient = (
     const deviceId = ref('');
 
     async function startAuth() {
-
+        console.log('startAuth');
         const beamsTokenProvider = new PusherPushNotifications.TokenProvider({
             url,// en la respuesta de este endpoint debe venir el token que se debe pasar en auth bearer04
             queryParams: {
@@ -49,8 +49,9 @@ const useBeamsClient = (
     }
 
     async function logOut() {
+        console.log('logOut');
         await beamsClient.stop();
-        //console.log('Beams client stopped');
+        console.log('Beams client stopped');
     }
 
     return {

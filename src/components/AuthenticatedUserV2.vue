@@ -6,10 +6,10 @@
             <span class="slider round"></span>
         </label>
 
-        <p>{{ isLoggedRef }}</p>
-
+       
         <div v-if="debug">
-            <p>Status: {{ isLogged ? 'Enabled' : 'Disabled' }}  </p>
+            <p>Status Ref:{{ isLoggedRef }}</p>
+            <p>Status Comp: {{ isLogged ? 'Enabled' : 'Disabled' }}  </p>
             <p>Device Id:: {{ deviceId }} </p>
             <p>App User Id:: {{ appUserId }}</p>
             <button @click="startAuth">Authorize</button>
@@ -21,7 +21,7 @@
 </template>
 
 <script lang="ts">
-import {ref, computed, onBeforeMount} from 'vue'
+import {ref, computed, onBeforeMount, watch} from 'vue'
 import useBeamsClient from '@/composables/useBeamsClient';
 
 export default{
@@ -48,10 +48,21 @@ export default{
         );
 
         onBeforeMount(async ()=>{
-            await beams.getBeamsUser()
+            await beams.getBeamsUser();
             if(beams.deviceId.value !== '' && beams.deviceId.value !== null){
                 isLoggedRef.value = true;
             }
+        });
+
+        watch(isLoggedRef, async (n,o)=>{
+            console.log('isLoggedRef', n);
+            beams.getBeamsUser();
+            if(n){
+                await beams.startAuth();
+            }else{
+                await beams.logOut();
+            }
+            beams.getBeamsUser();
         });
 
         //const isLogged = ref(false);
