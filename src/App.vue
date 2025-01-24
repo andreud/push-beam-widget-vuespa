@@ -17,7 +17,8 @@ const authEndpoint = import.meta.env.VITE_API_URL;
     <AuthenticatedUserV2
       app-user-id="12" 
       :beams-instance-id="instanceId"
-      :auth-endpoint="authEndpoint" />
+      :auth-endpoint="authEndpoint"
+      :debug="true" />
   </main>
 
 </template>
