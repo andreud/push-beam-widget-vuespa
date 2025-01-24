@@ -8,10 +8,8 @@ const useBeamsClient = (
 ) => {
     
     const beamsClient = new PusherPushNotifications.Client({instanceId});
-    console.log({beamsClient});    
-    
-    const deviceId = ref('--');
-        
+    const deviceId = ref('');
+
     async function startAuth() {
 
         const beamsTokenProvider = new PusherPushNotifications.TokenProvider({
@@ -23,7 +21,7 @@ const useBeamsClient = (
                 someHeader: "header-content", // Headers your auth endpoint needs
             },
         });
-        console.log({beamsTokenProvider});
+        //console.log({beamsTokenProvider});
         
         try {
             const clientsrtres = await beamsClient.start();
@@ -42,8 +40,8 @@ const useBeamsClient = (
     async function getBeamsUser() {
         console.log('gettn user');
         // Get User ID
-        const userIdResp = await beamsClient.getUserId();
-        console.log('Beams client userId', userIdResp);
+        //const userIdResp = await beamsClient.getUserId();
+        //console.log('Beams client userId', userIdResp);
         // Get Device ID
         const deviceIdResp = await beamsClient.getDeviceId();
         console.log('Beams client deviceId', deviceIdResp);
@@ -52,7 +50,7 @@ const useBeamsClient = (
 
     async function logOut() {
         await beamsClient.stop();
-        console.log('Beams client stopped');
+        //console.log('Beams client stopped');
     }
 
     return {
