@@ -1,12 +1,11 @@
 <template>
-    <div class="push-widget-authenticated-user">
+    <div class="beams-widget-auth-user">
 
         <label class="switch">
             <input type="checkbox" v-model="isLoggedRef" >
             <span class="slider round"></span>
         </label>
 
-       
         <div v-if="debug">
             <p>Status Ref:{{ isLoggedRef }}</p>
             <p>Status Comp: {{ isLogged ? 'Enabled' : 'Disabled' }}  </p>

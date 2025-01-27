@@ -1,6 +1,6 @@
 <script setup lang="ts">
-//import AuthenticatedUser from './components/AuthenticatedUser.vue'
-import AuthenticatedUserV2 from './components/AuthenticatedUserV2.vue'
+import BeamsAuthUser from './components/BeamsAuthUser.vue'
+//import BeamsSubscribeInterest from './components/BeamsSubscribeInterest.vue'
 
 const instanceId = import.meta.env.VITE_API_BEAMS_INSTANCE_ID;
 const authEndpoint = import.meta.env.VITE_API_URL;
@@ -14,11 +14,18 @@ const authEndpoint = import.meta.env.VITE_API_URL;
   </header>
 
   <main>
-    <AuthenticatedUserV2
+
+    <p>Let users enable personalized notifications</p>
+    <BeamsAuthUser
       app-user-id="12" 
       :beams-instance-id="instanceId"
       :auth-endpoint="authEndpoint"
       :debug="true" />
+    
+    
+
+
+
   </main>
 
 </template>
