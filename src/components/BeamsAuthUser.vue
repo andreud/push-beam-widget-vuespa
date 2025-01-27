@@ -1,12 +1,16 @@
 <template>
-    <div class="beams-widget-auth-user">
-
-        <label class="switch">
-            <input type="checkbox" v-model="isLoggedRef" >
-            <span class="slider round"></span>
+    <div class="beams-auth-user">
+        <label>
+          <span class="switch">
+              <input type="checkbox" v-model="isLoggedRef" >
+              <span class="slider round"></span>
+          </span>
+          <span>
+              {{ isLoggedRef ? labels.enabled : labels.disabled }}
+          </span>
         </label>
 
-        <div v-if="debug">
+        <div class="debug" v-if="debug">
           <code>
             <p>Status Ref:{{ isLoggedRef }}</p>
             <p>Device Id:: {{ deviceId }} </p>
@@ -27,17 +31,36 @@ import useBeamsClient from '@/composables/useBeamsClient';
 export default{
     
     props: {
-        appUserId: String,
-        beamsInstanceId: String,
-        authEndpoint: String, // URL sirve pero no acepta vacio
-        debug: Boolean
+      appUserId: {
+        type: String,
+        required: true,
+      },
+      beamsInstanceId: {
+        type: String,
+        required: true
+      },
+      authEndpoint: {
+        type: String,
+        required: true
+      },
+      debug: {
+        type: Boolean,
+        default: false
+      },
+      labels: {
+        type: Object,
+        default: ()=>({
+          enabled: 'Enabled',
+          disabled: 'Disabled'
+        })
+      }
     },
 
     setup(props) {
         // defineProps<{appUserId :string }>() // solo sive con <script setup>
-        if (!props.authEndpoint || !props.appUserId || !props.beamsInstanceId) {
+        /*if (!props.authEndpoint || !props.appUserId || !props.beamsInstanceId) {
             throw new Error("authEndpoint, appUserId and beamsInstanceId are required");
-        }
+        }*/
 
         const isLoggedRef = ref(false);
 
@@ -89,6 +112,11 @@ export default{
 </script>
 
 <style>
+.beams-auth-user label {
+  display: flex;
+  align-items: center;
+}
+
 /* The switch - the box around the slider */
 .switch {
   position: relative;
