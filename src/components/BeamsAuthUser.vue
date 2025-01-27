@@ -55,7 +55,7 @@ export default{
         });
 
         watch(isLoggedRef, async (n)=>{
-            console.log('isLoggedRef', n);
+            console.log('watch() isLoggedRef', n);
             beams.getBeamsUser();
             if(n){
               try{

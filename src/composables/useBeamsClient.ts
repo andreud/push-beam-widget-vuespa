@@ -11,7 +11,7 @@ const useBeamsClient = (
     const deviceId = ref('');
 
     async function startAuth() {
-        console.log('startAuth');
+        console.log('startAuth()');
         const beamsTokenProvider = new PusherPushNotifications.TokenProvider({
             url,// en la respuesta de este endpoint debe venir el token que se debe pasar en auth bearer04
             queryParams: {
@@ -23,24 +23,19 @@ const useBeamsClient = (
         });
         console.log({beamsTokenProvider});
         
-        //try {
-            const clientsrtres = await beamsClient.start();
-            console.log("clientsrtre");
-            console.log({clientsrtres});
-            const setUserResult = await beamsClient.setUserId(
-                userLocalId, //'12', 
-                beamsTokenProvider
-            ); // An object that contains a method called fetchToken. This method must return a promise that resolves to a correctly signed Beams Token for the desired user ID (
-            console.log('Beams client setUserId', setUserResult);
+        const clientsrtres = await beamsClient.start();
+        console.log("clientsrtre");
+        console.log({clientsrtres});
+        const setUserResult = await beamsClient.setUserId(
+            userLocalId, //'12', 
+            beamsTokenProvider
+        ); // An object that contains a method called fetchToken. This method must return a promise that resolves to a correctly signed Beams Token for the desired user ID (
+        console.log('Beams client setUserId', setUserResult);
         
-        /*} catch (error) {
-            console.log('error');
-            console.error(error);
-        }*/
     }
 
     async function getBeamsUser() {
-        console.log('gettn user');
+        console.log('getBeamsUser()');
         // Get User ID
         //const userIdResp = await beamsClient.getUserId();
         //console.log('Beams client userId', userIdResp);
@@ -51,7 +46,7 @@ const useBeamsClient = (
     }
 
     async function logOut() {
-        console.log('logOut');
+        console.log('logOut()');
         await beamsClient.stop();
         console.log('Beams client stopped');
     }
