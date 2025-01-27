@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import BeamsAuthUser from './components/BeamsAuthUser.vue'
-//import BeamsSubscribeInterest from './components/BeamsSubscribeInterest.vue'
+import BeamsSubscribeInterest from './components/BeamsSubscribeInterest.vue'
 
 const instanceId = import.meta.env.VITE_API_BEAMS_INSTANCE_ID;
 const authEndpoint = import.meta.env.VITE_API_URL;
@@ -22,7 +22,10 @@ const authEndpoint = import.meta.env.VITE_API_URL;
       :auth-endpoint="authEndpoint"
       :debug="true" />
     
-    
+    <p>Let users subscribe to interests batch notifications</p>
+    <BeamsSubscribeInterest
+      beams-interest-id="12"
+      :debug="true" />    
 
 
 

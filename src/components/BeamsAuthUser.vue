@@ -20,7 +20,7 @@
 </template>
 
 <script lang="ts">
-import {ref, computed, onBeforeMount, watch} from 'vue'
+import {ref, computed, onBeforeMount, watch} from 'vue';
 import useBeamsClient from '@/composables/useBeamsClient';
 
 export default{
@@ -53,7 +53,7 @@ export default{
             }
         });
 
-        watch(isLoggedRef, async (n,o)=>{
+        watch(isLoggedRef, async (n)=>{
             console.log('isLoggedRef', n);
             beams.getBeamsUser();
             if(n){
