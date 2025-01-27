@@ -7,20 +7,21 @@
         </label>
 
         <div v-if="debug">
+          <code>
             <p>Status Ref:{{ isLoggedRef }}</p>
-            <p>Status Comp: {{ isLogged ? 'Enabled' : 'Disabled' }}  </p>
             <p>Device Id:: {{ deviceId }} </p>
             <p>App User Id:: {{ appUserId }}</p>
             <button @click="startAuth">Authorize</button>
             <button @click="getBeamsUser">Get User</button>
             <button @click="logOut">Log Out</button>
+          </code>
         </div>
 
     </div>
 </template>
 
 <script lang="ts">
-import {ref, computed, onBeforeMount, watch} from 'vue';
+import {ref, onBeforeMount, watch} from 'vue';
 import useBeamsClient from '@/composables/useBeamsClient';
 
 export default{
@@ -57,7 +58,13 @@ export default{
             console.log('isLoggedRef', n);
             beams.getBeamsUser();
             if(n){
+              try{
                 await beams.startAuth();
+              }
+              catch(e){
+                isLoggedRef.value = false; 
+                console.error(e);
+              }
             }else{
                 await beams.logOut();
             }
@@ -65,13 +72,13 @@ export default{
         });
 
         //const isLogged = ref(false);
-        const isLogged = computed(()=>{
+        /*const isLogged = computed(()=>{
             return beams.deviceId.value !== '' && beams.deviceId.value !== null
-        });
+        });*/
 
         return {
             deviceId: beams.deviceId,
-            isLogged,
+            //isLogged,
             isLoggedRef,
             startAuth: beams.startAuth,
             getBeamsUser: beams.getBeamsUser,

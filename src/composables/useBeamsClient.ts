@@ -21,10 +21,11 @@ const useBeamsClient = (
                 someHeader: "header-content", // Headers your auth endpoint needs
             },
         });
-        //console.log({beamsTokenProvider});
+        console.log({beamsTokenProvider});
         
-        try {
+        //try {
             const clientsrtres = await beamsClient.start();
+            console.log("clientsrtre");
             console.log({clientsrtres});
             const setUserResult = await beamsClient.setUserId(
                 userLocalId, //'12', 
@@ -32,9 +33,10 @@ const useBeamsClient = (
             ); // An object that contains a method called fetchToken. This method must return a promise that resolves to a correctly signed Beams Token for the desired user ID (
             console.log('Beams client setUserId', setUserResult);
         
-        } catch (error) {
+        /*} catch (error) {
+            console.log('error');
             console.error(error);
-        }
+        }*/
     }
 
     async function getBeamsUser() {
