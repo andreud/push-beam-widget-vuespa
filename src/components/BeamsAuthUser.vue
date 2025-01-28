@@ -57,11 +57,7 @@ export default{
     },
 
     setup(props) {
-        // defineProps<{appUserId :string }>() // solo sive con <script setup>
-        /*if (!props.authEndpoint || !props.appUserId || !props.beamsInstanceId) {
-            throw new Error("authEndpoint, appUserId and beamsInstanceId are required");
-        }*/
-
+        
         const isLoggedRef = ref(false);
 
         const beams = useBeamsClient(
@@ -94,14 +90,8 @@ export default{
             beams.getBeamsUser();
         });
 
-        //const isLogged = ref(false);
-        /*const isLogged = computed(()=>{
-            return beams.deviceId.value !== '' && beams.deviceId.value !== null
-        });*/
-
         return {
             deviceId: beams.deviceId,
-            //isLogged,
             isLoggedRef,
             startAuth: beams.startAuth,
             getBeamsUser: beams.getBeamsUser,

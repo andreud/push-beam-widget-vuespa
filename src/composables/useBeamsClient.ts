@@ -35,10 +35,8 @@ const useBeamsClient = (
     }
 
     async function getBeamsUser() {
-        console.log('getBeamsUser()');
-        // Get User ID
+        console.log('getBeamsUser()'); // Get User ID
         //const userIdResp = await beamsClient.getUserId();
-        //console.log('Beams client userId', userIdResp);
         // Get Device ID
         const deviceIdResp = await beamsClient.getDeviceId();
         console.log('Beams client deviceId', deviceIdResp);
