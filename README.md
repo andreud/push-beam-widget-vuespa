@@ -1,8 +1,10 @@
 # Pusher Beams Vue widget (Demo SPA)
 
-## For specific users
+## Usage 
 
-Let users enable personalized notifications  
+### For specific users
+
+Let users enable personalized notifications delivery.
 
 ```
 <BeamsAuthUser
@@ -13,7 +15,7 @@ Let users enable personalized notifications
 />
 ```
 
-## For interests groups
+### For interests groups
 
 Let users subscribe to public interests for batch notification delivery.
 
@@ -24,3 +26,8 @@ Let users subscribe to public interests for batch notification delivery.
 	debug="boolean"
 />
 ```
+
+
+## Prerequisites:
+- A Pusher Beams instace ID
+-  

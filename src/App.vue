@@ -24,10 +24,9 @@ const authEndpoint = import.meta.env.VITE_API_URL;
     
     <p>Let users subscribe to interests batch notifications</p>
     <BeamsSubscribeInterest
-      beams-interest-id="12"
+      :beams-instance-id="instanceId"
+      beams-interest-id="debug-hamburgers"
       :debug="true" />    
-
-
 
   </main>
 
