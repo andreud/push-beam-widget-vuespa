@@ -1,5 +1,4 @@
 import type { Context } from "@netlify/functions";
-
 import PushNotifications from "@pusher/push-notifications-server";
 
 export default (req: Request, ctx: Context) => {
@@ -7,12 +6,10 @@ export default (req: Request, ctx: Context) => {
     // get the query param "?user_id=x" in netlify function
     const url = new URL(req.url);
     const userId = url.searchParams.get("user_id");
-    //const userId = req.query.user_id;
-    //console.log({userId});
-    
     const beamsInstanceId = Netlify.env.get("API_BEAMS_INSTANCE_ID");
     const beamsSecretKey = Netlify.env.get("API_BEAMS_SECRET_KEY");
-    console.log({beamsInstanceId, beamsSecretKey});
+    
+    console.log({userId, beamsInstanceId, beamsSecretKey});
 
     /*const beamsClient = new PushNotifications({
         instanceId: beamsInstanceId,
