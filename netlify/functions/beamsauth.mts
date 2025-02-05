@@ -4,6 +4,10 @@ import PushNotifications from "@pusher/push-notifications-server";
 
 export default (req: Request, ctx: Context) => {
 
+    // get the query param user_id in netlify function
+    const userId = req.query.user_id;
+    console.log({userId});
+
    const beamsInstanceId = Netlify.env.get("API_BEAMS_INSTANCE_ID");
    const beamsSecretKey = Netlify.env.get("API_BEAMS_SECRET_KEY");
 
