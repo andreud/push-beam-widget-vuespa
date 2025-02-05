@@ -1,5 +1,6 @@
 import type { Context } from "@netlify/functions";
-const PushNotifications = require("@pusher/push-notifications-server");
+
+import PushNotifications from "@pusher/push-notifications-server";
 
 export default (req: Request, ctx: Context) => {
 
