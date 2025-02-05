@@ -12,7 +12,7 @@ export default (req: Request, ctx: Context) => {
         secretKey: beamsSecretKey,
     });
 
-    const beamsToken = beamsClient.generateToken(12);
+    const beamsToken = beamsClient.generateToken("12");
 
     //return new Response('Hello from Beams Auth', { status: 200 });
     return new Response(JSON.stringify(beamsToken), { status: 200 });
