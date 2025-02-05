@@ -1,6 +1,3 @@
-## Recommended IDE Setup
-
-[VSCode](https://code.visualstudio.com/) + [Volar](https://marketplace.visualstudio.com/items?itemName=Vue.volar) (and disable Vetur).
 
 ## Type Support for `.vue` Imports in TS
 
@@ -21,6 +18,16 @@ npm install
 ```sh
 npm run dev
 ```
+
+
+### Netlify Development server for functions
+
+```sh
+netlify run dev
+```
+
+http://localhost:8888/.netlify/functions/beamsauth?user_id=2
+
 
 ### Type-Check, Compile and Minify for Production
 
