@@ -14,13 +14,13 @@ export default (req: Request, ctx: Context) => {
 
     console.log({userId, beamsInstanceId, beamsSecretKey});
 
-    /*  const beamsClient = new PushNotifications({
+    const beamsClient = new PushNotifications({
         instanceId: beamsInstanceId,
         secretKey: beamsSecretKey,
-    });*/
+    });
 
-    //const beamsToken = beamsClient.generateToken(userId);
+    const beamsToken = beamsClient.generateToken(userId);
 
-    return new Response('Hello from Beams Auth' + userId, { status: 200 });
-    //return new Response(JSON.stringify(beamsToken), { status: 200 });
+    //return new Response('Hello from Beams Auth' + userId, { status: 200 });
+    return new Response(JSON.stringify(beamsToken), { status: 200 });
 }
