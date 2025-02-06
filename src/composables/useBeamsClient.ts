@@ -4,7 +4,7 @@ import * as PusherPushNotifications from "@pusher/push-notifications-web";
 const useBeamsClient = (
     instanceId: string,
     url: string,
-    userLocalId: string
+    appUserId: string
 ) => {
     
     const beamsClient = new PusherPushNotifications.Client({instanceId});
@@ -27,7 +27,7 @@ const useBeamsClient = (
         console.log("clientsrtre");
         console.log({clientsrtres});
         const setUserResult = await beamsClient.setUserId(
-            userLocalId, //'12', 
+            appUserId, //'12', 
             beamsTokenProvider
         ); // An object that contains a method called fetchToken. This method must return a promise that resolves to a correctly signed Beams Token for the desired user ID (
         console.log('Beams client setUserId', setUserResult);
