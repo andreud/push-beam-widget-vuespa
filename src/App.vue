@@ -25,9 +25,15 @@ const debugBeamsSubscribeInterest = ref(false);
 
     <article class="mx-7 p-7 shadow-lg rounded-lg w-1/2">
       <h2 class="text-xl font-semibold mb-2">👤For specific user</h2>
-      <p class="text-lg mb-6 ">Let users enable personalized notifications</p>
+      <p class="text-lg mb-3 ">
+        Let users enable personalized notifications with the 
+        <code class="bg-green-200 text-green-900 p-1">&lt;BeamsAuthUser&gt;</code> component
+      </p>
       
-      <div class="widget-demo border-1 border-gray-600 my-4 p-4 rounded-lg shadow-sm">
+      <p class="text-lg">Demo</p>
+
+      <div class="widget-demo border-1 border-gray-600 my-3 p-4 rounded-sm shadow-sm">
+        <p class="italic">Send me notifications about my account or activity</p>
         <BeamsAuthUser
           app-user-id="12" 
           :beams-instance-id="instanceId"
@@ -47,49 +53,136 @@ const debugBeamsSubscribeInterest = ref(false);
     beams-instance-id="Beams instance ID"
     app-user-id="The user ID in your app" 
     auth-endpoint="URL that must return a Beams token"
-    /&gt;
-      </CodeBlock>
+  /&gt;</CodeBlock>
+
+      <p class="text-lg pt-2">Options</p>
+      <table class="table-auto">
+        <thead>
+          <tr>
+            <th class="px-4 py-2">Prop</th>
+            <th class="px-4 py-2">Type</th>
+            <th class="px-4 py-2">Description</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td class="border px-4 py-2">beams-instance-id</td>
+            <td class="border px-4 py-2">String</td>
+            <td class="border px-4 py-2">The Pusher Beams instance ID</td>
+          </tr>
+          <tr>
+            <td class="border px-4 py-2">app-user-id</td>
+            <td class="border px-4 py-2">String</td>
+            <td class="border px-4 py-2">The user ID in your app</td>
+          </tr>
+          <tr>
+            <td class="border px-4 py-2">auth-endpoint</td>
+            <td class="border px-4 py-2">String</td>
+            <td class="border px-4 py-2">
+              URL in your backend that must return a Beams token.
+              <a 
+                href="https://pusher.com/docs/beams/guides/publish-to-specific-user/web/#creating-a-beams-auth-endpoint"
+                class="text-purple-500">
+                See how to implement this endpoint
+              </a>
+              <br>
+
+            </td>
+          </tr>
+          <tr>
+            <td class="border px-4 py-2">debug</td>
+            <td class="border px-4 py-2">Boolean</td>
+            <td class="border px-4 py-2">Show debug info</td>
+          </tr>
+        </tbody>
+      </table>
       
     </article>
 
     <article class="mx-7 p-7 shadow-lg rounded-lg w-1/2">
       <h2 class="text-xl font-semibold mb-2 ">👥 For interest groups</h2>
-      <p class="mb-6 text-lg">Let users subscribe to interests batch notifications</p>
+      <p class="text-lg mb-3 ">
+        Let users subscribe to interests batch notifications with the 
+        <code class="bg-green-200 text-green-900 p-1">&lt;BeamsSubscribeInterest&gt;</code> component
+      </p>
       
-      <div class="widget-demo border-1 border-gray-600 p-4 rounded-lg">
-        <BeamsSubscribeInterest
-          :beams-instance-id="instanceId"
-          beams-interest-id="debug-tacos"
-          :debug="debugBeamsSubscribeInterest"
-          class="m-2" />
-        <BeamsSubscribeInterest
-          :beams-instance-id="instanceId"
-          beams-interest-id="debug-hamburgers"
-          :debug="debugBeamsSubscribeInterest"
-          class="m-2" />
-        <BeamsSubscribeInterest
-          :beams-instance-id="instanceId"
-          beams-interest-id="debug-salads"
-          :debug="debugBeamsSubscribeInterest"
-          class="m-2" />
-        </div>
+      <p class="text-lg">Demo</p>
 
-        <label for="debugBeamsSubscribeInterest" class="mt-4">
-          <input type="checkbox" v-model="debugBeamsSubscribeInterest" id="debugBeamsSubscribeInterest" />
-          Show Debug Info
-        </label>
+      <div class="widget-demo border-1 border-gray-600 my-3 p-4 rounded-sm shadow-sm">
+        <p class="italic">Send me notifications about:</p>
+        <p class="my-3">
+          <BeamsSubscribeInterest
+              :beams-instance-id="instanceId"
+              beams-interest-id="debug-tacos"
+              :debug="debugBeamsSubscribeInterest"
+            />
+        </p>
+        <p class="my-3">
+            <BeamsSubscribeInterest
+              :beams-instance-id="instanceId"
+              beams-interest-id="debug-hamburgers"
+              :debug="debugBeamsSubscribeInterest"
+            />
+        </p>
+        <p class="my-3">
+            <BeamsSubscribeInterest
+              :beams-instance-id="instanceId"
+              beams-interest-id="debug-salads"
+              :debug="debugBeamsSubscribeInterest"
+            />
+        </p>
+      </div>
 
-        <CodeBlock>
+      <label for="debugBeamsSubscribeInterest" class="mt-4">
+        <input type="checkbox" v-model="debugBeamsSubscribeInterest" id="debugBeamsSubscribeInterest" />
+        Show Debug Info
+      </label>
+
+      <p class="text-lg pt-2">Code</p>
+
+      <CodeBlock>
     &lt;BeamsSubscribeInterest
       beams-instance-id="Beams instance ID"
-      beams-interest-id="The ID of the interest to subscribe"
+      beams-interest-id="debug-tacos"
     /&gt;
 
     &lt;BeamsSubscribeInterest
       beams-instance-id="Beams instance ID"
-      beams-interest-id="The ID of the interest to subscribe"
+      beams-interest-id="debug-hamburgers"
     /&gt;
-        </CodeBlock>
+
+    &lt;BeamsSubscribeInterest
+      beams-instance-id="Beams instance ID"
+      beams-interest-id="debug-salads"
+    /&gt;</CodeBlock>
+
+        <p class="text-lg pt-2">Options</p>
+        <table class="table-auto">
+          <thead>
+            <tr>
+              <th class="px-4 py-2">Prop</th>
+              <th class="px-4 py-2">Type</th>
+              <th class="px-4 py-2">Description</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td class="border px-4 py-2">beams-instance-id</td>
+              <td class="border px-4 py-2">String</td>
+              <td class="border px-4 py-2">The Pusher Beams instance ID</td>
+            </tr>
+            <tr>
+              <td class="border px-4 py-2">beams-interest-id</td>
+              <td class="border px-4 py-2">String</td>
+              <td class="border px-4 py-2">The ID of the interest to subscribe</td>
+            </tr>
+            <tr>
+              <td class="border px-4 py-2">debug</td>
+              <td class="border px-4 py-2">Boolean</td>
+              <td class="border px-4 py-2">Show debug info</td>
+            </tr>
+          </tbody>
+        </table>
       
     </article>
     
