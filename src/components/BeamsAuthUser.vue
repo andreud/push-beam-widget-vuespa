@@ -15,9 +15,6 @@
             <p>Status Ref:{{ isLoggedRef }}</p>
             <p>Device Id:: {{ deviceId }} </p>
             <p>App User Id:: {{ appUserId }}</p>
-            <button @click="startAuth">Authorize</button>
-            <button @click="getBeamsUser">Get User</button>
-            <button @click="logOut">Log Out</button>
           </code>
         </div>
 
