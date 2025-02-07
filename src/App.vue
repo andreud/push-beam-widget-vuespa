@@ -16,16 +16,16 @@ const debugBeamsSubscribeInterest = ref(false);
 </script>
 
 <template>
-  <header class="p-6 text-center shadow-lg">
+  <header class="p-10 text-center shadow-lg">
     <!-- img alt="Vue logo" class="logo" src="./assets/logo.svg" width="125" height="125" / -->
-     <h1 class="text-3xl">Vue widgets for Pusher Beams</h1>
-     <p class="text-lg">🛎️ Switch components to enable Pusher Beams notifications in your Vue app</p> 
+     <h1 class="text-2xl text-green-800 font-semibold">Vue widgets for Pusher Beams</h1>
+     <p class="text-lg text-gray-700">🛎️ Switch components to enable Pusher Beams notifications in your Vue app</p> 
   </header>
 
   <main class="p-6 flex bg-green-100">
 
     <article class="mx-5 p-7 shadow-lg rounded-lg w-1/2 bg-white">
-      <h2 class="text-xl font-semibold mb-2">👤For specific user</h2>
+      <h2 class="text-xl font-semibold mb-2 text-gray-700">👤For specific user</h2>
       <p class="text-lg mb-3 ">
         Let users enable personalized notifications with the 
         <code class="bg-green-200 text-green-900 p-1">&lt;BeamsAuthUser&gt;</code> component
