@@ -1,9 +1,9 @@
 <script setup lang="ts">
 import { ref } from 'vue'
-import "prismjs";
-import "prismjs/themes/prism-tomorrow.css"; // Choose your preferred theme
-import CodeBlock from './components/CodeBlock.vue';
+//import Prism from "prismjs";
+//import "prismjs/themes/prism-tomorrow.css"; // Dark mode theme
 
+import CodeBlock from './components/CodeBlock.vue';
 import BeamsAuthUser from './components/BeamsAuthUser.vue'
 import BeamsSubscribeInterest from './components/BeamsSubscribeInterest.vue'
 
@@ -16,14 +16,15 @@ const debugBeamsSubscribeInterest = ref(false);
 </script>
 
 <template>
-  <header class="p-6">
+  <header class="p-6 text-center shadow-lg">
     <!-- img alt="Vue logo" class="logo" src="./assets/logo.svg" width="125" height="125" / -->
      <h1 class="text-3xl">Vue widgets for Pusher Beams</h1>
+     <p class="text-lg">🛎️ Switch components to enable Pusher Beams notifications in your Vue app</p> 
   </header>
 
-  <main class="p-6 flex">
+  <main class="p-6 flex bg-green-100">
 
-    <article class="mx-7 p-7 shadow-lg rounded-lg w-1/2">
+    <article class="mx-5 p-7 shadow-lg rounded-lg w-1/2 bg-white">
       <h2 class="text-xl font-semibold mb-2">👤For specific user</h2>
       <p class="text-lg mb-3 ">
         Let users enable personalized notifications with the 
@@ -50,10 +51,11 @@ const debugBeamsSubscribeInterest = ref(false);
 
       <CodeBlock>
   &lt;BeamsAuthUser
-    beams-instance-id="Beams instance ID"
-    app-user-id="The user ID in your app" 
-    auth-endpoint="URL that must return a Beams token"
-  /&gt;</CodeBlock>
+      beams-instance-id="Beams instance ID"
+      app-user-id="The user ID in your app" 
+      auth-endpoint="URL that must return a Beams token"
+    /&gt;
+      </CodeBlock>
 
       <p class="text-lg pt-2">Options</p>
       <table class="table-auto">
@@ -99,7 +101,7 @@ const debugBeamsSubscribeInterest = ref(false);
       
     </article>
 
-    <article class="mx-7 p-7 shadow-lg rounded-lg w-1/2">
+    <article class="mx-5 p-7 shadow-lg rounded-lg w-1/2 bg-white">
       <h2 class="text-xl font-semibold mb-2 ">👥 For interest groups</h2>
       <p class="text-lg mb-3 ">
         Let users subscribe to interests batch notifications with the 

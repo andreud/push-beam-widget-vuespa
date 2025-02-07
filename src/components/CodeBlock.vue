@@ -17,9 +17,10 @@
   
   <script setup lang="ts">
   import { ref, onMounted } from "vue";
+  
   import Prism from "prismjs";
   import "prismjs/themes/prism-tomorrow.css"; // Dark mode theme
-  
+
   const codeBlock = ref(null);
   const copied = ref(false);
   
@@ -45,8 +46,19 @@
   </script>
   
   <style>
-  /* pre {
-    @apply text-white p-4 overflow-x-auto shadow-lg transition-all duration-300;
-  } */
+  code , pre{
+    /*@apply text-white p-4 overflow-x-auto shadow-lg transition-all duration-300;*/
+    white-space: normal !important;
+  }
+
+  /*pre {
+    @apply bg-gray-900 text-white p-4 overflow-x-auto shadow-lg transition-all duration-300;*/
+    /*line-height: 1.5;*/ /* Ensures spacing between lines */
+    /*white-space: pre-wrap;*/ /* Wraps long lines properly */
+  /*}*/
+  /*code {
+    font-family: "Fira Code", "Consolas", monospace;*/ /* Ensures readable coding font */
+    /*white-space: pre-wrap;*/ /* Wraps long lines properly */
+  /*}*/
   </style>
   

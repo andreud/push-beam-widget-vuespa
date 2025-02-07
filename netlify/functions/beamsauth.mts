@@ -2,10 +2,9 @@
  * Demo endpoint to generate a Beams token for a user.
  */
 
-import type { Context } from "@netlify/functions";
 import PushNotifications from "@pusher/push-notifications-server";
 
-export default (req: Request, ctx: Context) => {
+export default (req: Request) => {
 
     const userId = new URL(req.url).searchParams.get("user_id");
     const beamsInstanceId = Netlify.env.get("API_BEAMS_INSTANCE_ID");
